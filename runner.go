@@ -118,27 +118,27 @@ func (r *runner) scan(rt []rune, textstart int, quick bool, timeout time.Duratio
 	r.runtextpos = textstart
 	initted := false
 
-	r.startTimeoutWatch()
+	//r.startTimeoutWatch()
 	for {
-		if r.re.Debug() {
-			//fmt.Printf("\nSearch content: %v\n", string(r.runtext))
-			fmt.Printf("\nSearch range: from 0 to %v\n", r.runtextend)
-			fmt.Printf("Firstchar search starting at %v stopping at %v\n", r.runtextpos, stoppos)
-		}
+		//if r.re.Debug() {
+		//	//fmt.Printf("\nSearch content: %v\n", string(r.runtext))
+		//	fmt.Printf("\nSearch range: from 0 to %v\n", r.runtextend)
+		//	fmt.Printf("Firstchar search starting at %v stopping at %v\n", r.runtextpos, stoppos)
+		//}
 
 		if r.findFirstChar() {
-			if err := r.checkTimeout(); err != nil {
-				return nil, err
-			}
+			//if err := r.checkTimeout(); err != nil {
+			//	return nil, err
+			//}
 
 			if !initted {
 				r.initMatch()
 				initted = true
 			}
 
-			if r.re.Debug() {
-				fmt.Printf("Executing engine starting at %v\n\n", r.runtextpos)
-			}
+			//if r.re.Debug() {
+			//	fmt.Printf("Executing engine starting at %v\n\n", r.runtextpos)
+			//}
 
 			if err := r.execute(); err != nil {
 				return nil, err
@@ -177,13 +177,13 @@ func (r *runner) execute() error {
 
 	for {
 
-		if r.re.Debug() {
-			r.dumpState()
-		}
+		//if r.re.Debug() {
+		//	r.dumpState()
+		//}
 
-		if err := r.checkTimeout(); err != nil {
-			return err
-		}
+		//if err := r.checkTimeout(); err != nil {
+		//	return err
+		//}
 
 		switch r.operator {
 		case syntax.Stop:
@@ -1032,13 +1032,13 @@ func (r *runner) backtrack() {
 	newpos := r.runtrack[r.runtrackpos]
 	r.runtrackpos++
 
-	if r.re.Debug() {
-		if newpos < 0 {
-			fmt.Printf("       Backtracking (back2) to code position %v\n", -newpos)
-		} else {
-			fmt.Printf("       Backtracking to code position %v\n", newpos)
-		}
-	}
+	//if r.re.Debug() {
+	//	if newpos < 0 {
+	//		fmt.Printf("       Backtracking (back2) to code position %v\n", -newpos)
+	//	} else {
+	//		fmt.Printf("       Backtracking to code position %v\n", newpos)
+	//	}
+	//}
 
 	if newpos < 0 {
 		newpos = -newpos
