@@ -912,6 +912,7 @@ func (r *runner) ensureStorage() {
 	if r.runtrackpos < r.runtrackcount*4 {
 		doubleIntSlice(&r.runtrack, &r.runtrackpos)
 	}
+	fmt.Printf("r.runstackpos=%d, r.runtrackpos=%d, r.runtrackcount*4=%d\n", r.runstackpos, r.runtrackpos, r.runtrackcount*4)
 }
 
 func doubleIntSlice(s *[]int, pos *int) {
